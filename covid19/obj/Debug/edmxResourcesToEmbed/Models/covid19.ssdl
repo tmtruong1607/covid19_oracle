@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model.Store" Provider="Oracle.ManagedDataAccess.Client" ProviderManifestToken="12.2" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="QUOCGIA">
+    <Key>
+      <PropertyRef Name="MAQG" />
+    </Key>
+    <Property Name="MAQG" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TENQG" Type="varchar2" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="THONGKEQG">
+    <Key>
+      <PropertyRef Name="MAQG" />
+    </Key>
+    <Property Name="MAQG" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TONGSOCAMAC" Type="number" Precision="38" Scale="0" />
+    <Property Name="TONGSOCACHET" Type="number" Precision="38" Scale="0" />
+    <Property Name="TONGSOCAKHOI" Type="number" Precision="38" Scale="0" />
+  </EntityType>
+  <EntityType Name="THONGKEQGBYDAY">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="number" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MAQG" Type="varchar2" MaxLength="10" Nullable="false" />
+    <Property Name="TINH" Type="varchar2" MaxLength="50" />
+    <Property Name="THANHPHO" Type="varchar2" MaxLength="50" />
+    <Property Name="SOCAMAC" Type="number" Precision="38" Scale="0" />
+    <Property Name="SOCACHET" Type="number" Precision="38" Scale="0" />
+    <Property Name="SOCAKHOI" Type="number" Precision="38" Scale="0" />
+    <Property Name="NGAYGHINHAN" Type="date" />
+  </EntityType>
+  <EntityType Name="THONGKETG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TONGSOCAMAC" Type="number" Precision="38" Scale="0" />
+    <Property Name="TONGSOCACHET" Type="number" Precision="38" Scale="0" />
+    <Property Name="TONGSOCAKHOI" Type="number" Precision="38" Scale="0" />
+    <Property Name="ID" Type="number" Precision="1" Scale="0" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TINTUC">
+    <Key>
+      <PropertyRef Name="LINK" />
+    </Key>
+    <Property Name="TIEUDE" Type="varchar2" MaxLength="200" />
+    <Property Name="LINK" Type="varchar2" MaxLength="500" Nullable="false" />
+    <Property Name="NGAYCAPNHAT" Type="date" />
+    <Property Name="MOTA" Type="varchar2" MaxLength="250" />
+    <Property Name="IMG" Type="varchar2" MaxLength="1000" />
+  </EntityType>
+  <Association Name="FK_THONGKEQG_QUOCGIA">
+    <End Role="QUOCGIA" Type="Self.QUOCGIA" Multiplicity="1" />
+    <End Role="THONGKEQG" Type="Self.THONGKEQG" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="QUOCGIA">
+        <PropertyRef Name="MAQG" />
+      </Principal>
+      <Dependent Role="THONGKEQG">
+        <PropertyRef Name="MAQG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ModelStoreContainer">
+    <EntitySet Name="QUOCGIA" EntityType="Self.QUOCGIA" Schema="SA" store:Type="Tables" />
+    <EntitySet Name="THONGKEQG" EntityType="Self.THONGKEQG" Schema="SA" store:Type="Tables" />
+    <EntitySet Name="THONGKEQGBYDAY" EntityType="Self.THONGKEQGBYDAY" Schema="SA" store:Type="Tables" />
+    <EntitySet Name="THONGKETG" EntityType="Self.THONGKETG" Schema="SA" store:Type="Tables" />
+    <EntitySet Name="TINTUC" EntityType="Self.TINTUC" Schema="SA" store:Type="Tables" />
+    <AssociationSet Name="FK_THONGKEQG_QUOCGIA" Association="Self.FK_THONGKEQG_QUOCGIA">
+      <End Role="QUOCGIA" EntitySet="QUOCGIA" />
+      <End Role="THONGKEQG" EntitySet="THONGKEQG" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

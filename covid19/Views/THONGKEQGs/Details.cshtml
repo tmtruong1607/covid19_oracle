@@ -1,0 +1,51 @@
+﻿@model covid19.Models.THONGKEQG
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>THONGKEQG</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TONGSOCAMAC)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONGSOCAMAC)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TONGSOCACHET)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONGSOCACHET)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TONGSOCAKHOI)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TONGSOCAKHOI)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.QUOCGIA.TENQG)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.QUOCGIA.TENQG)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MAQG }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

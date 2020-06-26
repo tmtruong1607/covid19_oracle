@@ -1,0 +1,228 @@
+﻿@model IEnumerable<covid19.Models.THONGKEQG>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<h2>Index</h2>
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <title>Bố cục trang web Bootstrap 4 --- dammio.com</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            .fakeimg {
+                height: 200px;
+                background: #aaa;
+            }
+            table.scrolldown {
+                width: 100%;
+                /* border-collapse: collapse; */
+                border-spacing: 0;
+                border: 2px solid black;
+            }
+
+                /* To display the block as level element */
+                table.scrolldown tbody, table.scrolldown thead {
+                    display: block;
+                }
+
+            thead tr th {
+                height: 40px;
+                line-height: 40px;
+                text-align:center
+            }
+
+            table.scrolldown tbody {
+                /* Set the height of table body */
+                height: 500px;
+                /* Set vertical scroll */
+                overflow-y: auto;
+                /* Hide the horizontal scroll */
+                overflow-x: hidden;
+            }
+
+            tbody {
+                border-top: 2px solid black;
+            }
+
+                tbody td, thead th {
+                    width: 200px;
+                    border-right: 2px solid black;
+                    border-bottom: 2px solid black;
+                    text-align: center
+                }
+
+            td {
+                text-align: center;
+            }
+            th {
+                text-align: center;
+                border-right: 2px solid black;
+                border-bottom: 2px solid black
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="container">
+
+            <!-- Phần header website -->
+            <div class="jumbotron text-center" style="margin-bottom:0">
+                <h1>COVID-19</h1>
+            </div>
+            <!-- Kết thúc phần header website -->
+            <!-- Phần nội dung chính -->
+            <div class="row">
+
+                <!-- Cột trái -->
+
+                <div class="col-sm-4" style="height:168px">
+                    <h2 style="text-align:center">Thế giới</h2>
+                    <div class="col-sm-4">
+                        <div style="padding:5px 0px 5px 0px">
+                            <div style="border:hidden; border-right:hidden; background-color:red; color:white;text-align:center;font-size:20px;">
+                                Tổng số ca nhiễm
+                            </div>
+                        </div>
+                        <div style="padding:5px 0px 5px 0px">
+                            <div style="border:hidden; border-right:hidden; background-color:darkslategray; color:white; text-align:center;font-size:20px;">
+                                Tổng số ca chết
+                            </div>
+                        </div>
+                        <div style="padding:5px 0px 5px 0px">
+                            <div style="border:hidden; border-right:hidden; background-color:forestgreen; color:white;text-align:center;font-size:20px;">
+                                Tổng số ca khỏi
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-8">
+                        @foreach (var item in ViewBag.tg)
+                        {
+                            <div style="font:bold 20px arial">
+                                <div class="row" style="text-align:left;height:66px;width: 50%; padding: 22px 0px 0px 0px;">
+                                    @item.TONGSOCAMAC
+                                </div>
+                                <div class="row" style="text-align:left;height:66px;width: 50%; padding: 22px 0px 0px 0px;">
+                                    @item.TONGSOCACHET
+                                </div>
+                                <div class="row" style="text-align:left;height:66px;width: 50%; padding: 22px 0px 0px 0px;">
+                                    @item.TONGSOCAKHOI
+                                </div>
+                            </div>
+                        }
+                    </div>
+                        @*<table style="border:hidden; border-right:hidden">
+                <tr style="border-right:hidden">
+                    <th style="border:hidden; border-right:hidden; background-color:red; color:white">Tổng số ca nhiễm</th>
+                    <th style="border:hidden; border-right:hidden; background-color:gray; color:white">Tổng số ca chết</th>
+                    <th style="border:hidden; border-right:hidden">Tổng số ca khỏi</th>
+                </tr>
+                @foreach (var item in ViewBag.tg)
+                {
+                    <tr style="border:hidden; border-right:hidden">
+                        <td style="border:hidden; border-right:hidden; background-color:red; color:white; text-align:center">
+                            @item.TONGSOCAMAC
+                        </td>
+                        <td style="border:hidden; border-right:hidden; background-color:gray; color:white">
+                            @item.TONGSOCACHET
+                        </td>
+                        <td style="border:hidden; border-right:hidden">
+                            @item.TONGSOCAKHOI
+                        </td>
+                    </tr>
+                }
+            </table>*@
+                        <hr class="d-sm-none">
+                    </div>
+                    <!-- Kết thúc cột trái -->
+                    <!-- Cột phải -->
+                    <div class="col-sm-8" style="border:hidden">
+                        <h2 style="text-align:center">Tình hình các quốc gia</h2>
+                        <table class="scrolldown" style="border:hidden;">
+                            <tr style="text-align:center;border-right:hidden">
+                                <th>
+                                    Quốc gia
+                                </th>
+                                <th>
+                                    Tổng số ca mắc
+                                </th>
+                                <th>
+                                    Tổng số ca chết
+                                </th>
+                                <th>
+                                    Tổng số ca khỏi
+                                </th>
+                                <th></th>
+                            </tr>
+                            @foreach (var item in ViewBag.qg)
+                             {
+                                <tr>
+                                    <td>
+                                        <img src="https://www.countryflags.io/@item.MAQG/flat/24.png">
+                                        @item.QUOCGIA.TENQG
+                                    </td>
+                                    <td style="border-width:thin">
+                                        @item.TONGSOCAMAC
+                                    </td>
+                                    <td style="border-width:thin">
+                                        @item.TONGSOCACHET
+                                    </td>
+                                    <td style="border-right:hidden;border-width:thin">
+                                        @item.TONGSOCAKHOI
+                                    </td>
+                                </tr>
+                             }
+                        </table>
+                    </div>
+                    <!-- Kết thúc cột phải -->
+
+                </div>
+        </div>
+        <div>
+            <div class="col-left col-left-subfolder">
+                <div class="width_common list-news-subfolder" id="list-news">
+                    @foreach (var item in ViewBag.tt)
+                    {
+                        <article class="item-news item-news-common" data-publishtime="1593160110">
+                            <div class="thumb-art">
+                                <a data-medium="Item-1" data-thumb="1" href="https://vnexpress.net/nhung-cai-om-cuu-sinh-qua-lop-nilon-4121568.html" title="Những cái ôm 'cứu sinh' qua lớp nilon" class="thumb thumb-5x3" data-itm-source="#vn_source=&amp;vn_campaign=Stream&amp;vn_medium=Item-1&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1">
+                                    <picture>
+                                        <img itemprop="contentUrl" style="transform: translateX(-50%); left: 50%;" loading="lazy" intrinsicsize="500x300" class="lazy lazied" src="@item.IMG" data-ll-status="loaded">
+                                    </picture>
+                                </a>
+                            </div>
+                            <h3 class="title-news"><a data-medium="Item-1" data-thumb="1" title="@item.TIEUDE" href="@item.LINK" data-itm-source="#vn_source=&amp;vn_campaign=Stream&amp;vn_medium=Item-1&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1">@item.TIEUDE</a></h3>
+                            <p class="description"><a data-medium="Item-1" data-thumb="1" title="@item.TIEUDE" href="@item.LINK" data-itm-source="#vn_source=&amp;vn_campaign=Stream&amp;vn_medium=Item-1&amp;vn_term=Desktop&amp;vn_thumb=1" data-itm-added="1"><span class="location-stamp"></span>@item.MOTA</a></p>
+                            <p class="meta-news">
+                                <span class="time-public"><span>@item.NGAYCAPNHAT</span></span>
+                                <span class="cate_top_1003819"></span>
+                            </p>
+                        </article>
+                    }
+
+                </div>
+            </div>
+        </div>
+        <!-- Kết thúc phần nội dung chính -->
+        <!-- Phần Footer -->
+        <div class="jumbotron text-center" style="margin-bottom:0">
+            <p>Bản quyền 2020 thuộc về DAMMIO.COM.</p>
+        </div>
+        <!-- Kết thúc phần Footer -->
+
+    </body>
+    </html>
+    <style>
+
+    </style>
+
+
+<script>
+    function showImg() {
+
+    }
+</script>

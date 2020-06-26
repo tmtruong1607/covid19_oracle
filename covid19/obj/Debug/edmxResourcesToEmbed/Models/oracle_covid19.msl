@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ModelStoreContainer" CdmEntityContainer="Entities2">
+    <EntitySetMapping Name="QUOCGIAs">
+      <EntityTypeMapping TypeName="Model.QUOCGIA">
+        <MappingFragment StoreEntitySet="QUOCGIA">
+          <ScalarProperty Name="MAQG" ColumnName="MAQG" />
+          <ScalarProperty Name="TENQG" ColumnName="TENQG" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGKEQGs">
+      <EntityTypeMapping TypeName="Model.THONGKEQG">
+        <MappingFragment StoreEntitySet="THONGKEQG">
+          <ScalarProperty Name="MAQG" ColumnName="MAQG" />
+          <ScalarProperty Name="TONGSOCAMAC" ColumnName="TONGSOCAMAC" />
+          <ScalarProperty Name="TONGSOCACHET" ColumnName="TONGSOCACHET" />
+          <ScalarProperty Name="TONGSOCAKHOI" ColumnName="TONGSOCAKHOI" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGKEQGBYDAYs">
+      <EntityTypeMapping TypeName="Model.THONGKEQGBYDAY">
+        <MappingFragment StoreEntitySet="THONGKEQGBYDAY">
+          <ScalarProperty Name="STT" ColumnName="STT" />
+          <ScalarProperty Name="MAQG" ColumnName="MAQG" />
+          <ScalarProperty Name="TINH" ColumnName="TINH" />
+          <ScalarProperty Name="THANHPHO" ColumnName="THANHPHO" />
+          <ScalarProperty Name="SOCAMAC" ColumnName="SOCAMAC" />
+          <ScalarProperty Name="SOCACHET" ColumnName="SOCACHET" />
+          <ScalarProperty Name="SOCAKHOI" ColumnName="SOCAKHOI" />
+          <ScalarProperty Name="NGAYGHINHAN" ColumnName="NGAYGHINHAN" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="THONGKETGs">
+      <EntityTypeMapping TypeName="Model.THONGKETG">
+        <MappingFragment StoreEntitySet="THONGKETG">
+          <ScalarProperty Name="TONGSOCAMAC" ColumnName="TONGSOCAMAC" />
+          <ScalarProperty Name="TONGSOCACHET" ColumnName="TONGSOCACHET" />
+          <ScalarProperty Name="TONGSOCAKHOI" ColumnName="TONGSOCAKHOI" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TINTUCs">
+      <EntityTypeMapping TypeName="Model.TINTUC">
+        <MappingFragment StoreEntitySet="TINTUC">
+          <ScalarProperty Name="IMG" ColumnName="IMG" />
+          <ScalarProperty Name="TIEUDE" ColumnName="TIEUDE" />
+          <ScalarProperty Name="LINK" ColumnName="LINK" />
+          <ScalarProperty Name="NGAYCAPNHAT" ColumnName="NGAYCAPNHAT" />
+          <ScalarProperty Name="MOTA" ColumnName="MOTA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="QUOCGIA">
+    <Key>
+      <PropertyRef Name="MAQG" />
+    </Key>
+    <Property Name="MAQG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TENQG" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="THONGKEQG" Relationship="Self.FK_THONGKEQG_QUOCGIA" FromRole="QUOCGIA" ToRole="THONGKEQG" />
+  </EntityType>
+  <EntityType Name="THONGKEQG">
+    <Key>
+      <PropertyRef Name="MAQG" />
+    </Key>
+    <Property Name="MAQG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TONGSOCAMAC" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TONGSOCACHET" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TONGSOCAKHOI" Type="Decimal" Precision="38" Scale="0" />
+    <NavigationProperty Name="QUOCGIA" Relationship="Self.FK_THONGKEQG_QUOCGIA" FromRole="THONGKEQG" ToRole="QUOCGIA" />
+  </EntityType>
+  <EntityType Name="THONGKEQGBYDAY">
+    <Key>
+      <PropertyRef Name="STT" />
+    </Key>
+    <Property Name="STT" Type="Decimal" Precision="38" Scale="0" Nullable="false" />
+    <Property Name="MAQG" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TINH" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="THANHPHO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SOCAMAC" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SOCACHET" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="SOCAKHOI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="NGAYGHINHAN" Type="DateTime" />
+  </EntityType>
+  <EntityType Name="THONGKETG">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="TONGSOCAMAC" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TONGSOCACHET" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="TONGSOCAKHOI" Type="Decimal" Precision="38" Scale="0" />
+    <Property Name="ID" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TINTUC">
+    <Key>
+      <PropertyRef Name="LINK" />
+    </Key>
+    <Property Name="TIEUDE" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="LINK" Type="String" MaxLength="500" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="NGAYCAPNHAT" Type="DateTime" />
+    <Property Name="MOTA" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="IMG" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <Association Name="FK_THONGKEQG_QUOCGIA">
+    <End Role="QUOCGIA" Type="Self.QUOCGIA" Multiplicity="1" />
+    <End Role="THONGKEQG" Type="Self.THONGKEQG" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="QUOCGIA">
+        <PropertyRef Name="MAQG" />
+      </Principal>
+      <Dependent Role="THONGKEQG">
+        <PropertyRef Name="MAQG" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities2" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="QUOCGIAs" EntityType="Self.QUOCGIA" />
+    <EntitySet Name="THONGKEQGs" EntityType="Self.THONGKEQG" />
+    <EntitySet Name="THONGKEQGBYDAYs" EntityType="Self.THONGKEQGBYDAY" />
+    <EntitySet Name="THONGKETGs" EntityType="Self.THONGKETG" />
+    <EntitySet Name="TINTUCs" EntityType="Self.TINTUC" />
+    <AssociationSet Name="FK_THONGKEQG_QUOCGIA" Association="Self.FK_THONGKEQG_QUOCGIA">
+      <End Role="QUOCGIA" EntitySet="QUOCGIAs" />
+      <End Role="THONGKEQG" EntitySet="THONGKEQGs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>
